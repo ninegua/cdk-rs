@@ -33,7 +33,7 @@ jobs:
         toolchain: stable
         override: true
     - name: build
-      run: make release
+      run: cargo build --release --locked
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
