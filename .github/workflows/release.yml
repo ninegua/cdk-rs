@@ -10,14 +10,19 @@ jobs:
     name: Release binary for Linux x86_64
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v1.9
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
       with:
-        cmake-version: '3.16.x'
-    - name: Use cmake
-      run: cmake --version
-    - uses: gmiam/rust-musl-action@master
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-1
+    - name: Install Rust
+      run: |
+        rustup update ${{ matrix.rust }} --no-self-update
+        rustup default ${{ matrix.rust }}
+        rustup target add x86_64-unknown-linux-musl
     - name: Build binaries
       run: cargo build --target x86_64-unknown-linux-musl --release --locked
     - name: Upload binaries to release
