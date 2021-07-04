@@ -10,11 +10,13 @@ jobs:
     name: Release binary for Linux x86_64
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@master
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.9
       with:
         cmake-version: '3.16.x'
-    - uses: actions/checkout@master
+    - name: Use cmake
+        run: cmake --version
     - uses: gmiam/rust-musl-action@master
       with:
         args: cargo build --target x86_64-unknown-linux-musl --release --locked
