@@ -15,7 +15,7 @@ repository = "https://github.com/dfinity/cdk-rs"
 rust-version = "1.60.0"
 
 [dependencies]
-candid = "0.7.4"
+candid = { git = "https://github.com/ninegua/candid", rev = "ec5d9806c8234a9a78539b8f256814a3bfc3029c" }
 cfg-if = "1.0.0"
 serde = "1.0.110"
 

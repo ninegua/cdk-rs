@@ -8,7 +8,7 @@ license = "Apache-2.0"
 repository = "https://github.com/dfinity/cdk-rs"
 
 [dependencies]
-candid = "0.7.4"
+candid = { git = "https://github.com/ninegua/candid", rev = "ec5d9806c8234a9a78539b8f256814a3bfc3029c" }
 cargo_metadata = "0.14.2"
 escargot = { version = "0.5.7", features = ["print"] }
 ic-cdk = { path = "../src/ic-cdk" }
